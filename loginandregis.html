@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Good Day Cafe</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Playfair, Montserrat, Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>   
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section id="hero" class="d-flex align-items-center justify-content-center">
+            
+            <!-- Background Video -->
+            <video autoplay muted loop id="myVideo">
+                <!-- Note: Ensure this file exists in your folder -->
+                <source src="assets/img/Cafe_Video_Generation_Request.mp4" type="video/mp4">
+            </video>
+            
+            <div class="video-overlay"></div>
+
+            <div class="container container-content text-center" data-aos="fade-up" data-aos-delay="500">
+                <!-- Logo -->
+                <img src="assets/img/Good Day Cafe Logo.png" class="img-fluid logo-img" alt="Cafe Logo">
+                
+                <!-- Spacing below logo -->
+                <div class="my-5"></div>
+
+                <!-- MODAL Buttons -->
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="button" class="btn btn-dark btn-lg px-4 font-montserrat" data-bs-toggle="modal" data-bs-target="#regisModal">
+                        Register
+                    </button>        
+
+                    <button type="button" class="btn btn-secondary btn-lg px-4 font-montserrat" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Log in
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN MODAL START -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- Dark Modal Content -->
+                <div class="modal-content modal-content-dark">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header modal-header-dark">
+                        <h3 class="modal-title font-playfair fw-bold">Log In</h3>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <!-- Modal Body -->
+                    <div class="modal-body p-4">
+                        <form method="post" action="login.php">
+                            <!-- Email Input -->
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label small text-uppercase tracking-wide">Email Address</label>
+                                <input type="email" class="form-control form-control-lg form-control-dark" id="emailInput" name="emailInput" placeholder="name@example.com">
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <label for="passwordInput" class="form-label small text-uppercase tracking-wide">Password</label>
+                                
+                                </div>
+                                <input type="password" class="form-control form-control-lg form-control-dark" id="passwordInput" name="passwordInput" placeholder="••••••••">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-light btn-lg font-playfair fw-bold">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                   
+
+                </div>
+            </div>
+        </div>
+        <!-- LOGIN MODAL END -->
+
+          <!-- REGIS MODAL START -->
+        <div class="modal fade" id="regisModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- Dark Modal Content -->
+                <div class="modal-content modal-content-dark">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header modal-header-dark">
+                        <h3 class="modal-title font-playfair fw-bold">Register</h3>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <!-- Modal Body -->
+                    <div class="modal-body p-4">
+                        <form method="post" action="regis.php">
+
+                            <!--First Name Input-->
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label small text-uppercase tracking-wide">First Name</label>
+                                <input type="text" class="form-control form-control-lg form-control-dark" id="fname" name="fname" placeholder="Morgan" required>
+                            </div>
+
+                            <!--Last Name Input-->
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label small text-uppercase tracking-wide">Last Name</label>
+                                <input type="text" class="form-control form-control-lg form-control-dark" id="fname" name="lname" placeholder="Parker" required>
+                            </div>
+
+                              <!-- Date of Birth-->
+                            <div class="mb-3">
+                                <label for="regDate" class="form-label small text-uppercase tracking-wide">Date of Birth</label>
+                                <input type="date" class="form-control form-control-lg form-control-dark form-control-date" id="bday" name="bday" placeholder="DD/MM/YYYY" required>
+                            </div>
+                            
+                            <!-- Email Input -->
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label small text-uppercase tracking-wide">Email Address</label>
+                                <input type="email" class="form-control form-control-lg form-control-dark" id="emailReg" name="emailReg" placeholder="name@example.com" required>
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <label for="passwordInput" class="form-label small text-uppercase tracking-wide">Password</label>
+                                
+                                </div>
+                                <input type="password" class="form-control form-control-lg form-control-dark" id="passReg" name="passReg" placeholder="••••••••" required>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-light btn-lg font-playfair fw-bold">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                   
+
+                </div>
+            </div>
+        </div>
+        <!-- REGIS MODAL END -->
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
