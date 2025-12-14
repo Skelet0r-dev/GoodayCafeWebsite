@@ -19,57 +19,82 @@ document.addEventListener("DOMContentLoaded", function () {
   let cartItems = [];
   let total = 0;
 
-function updateCartUI() {
-  total = 0; // Reset total price
 
-  const rowsHTML = [];
- for (let i = 0; i < cartItems.length; i += 2) {
-  const rowItems = cartItems.slice(i, i + 2) // Get two items per row
-    .map((item, rowIndex) => {
-      total += item.price * item.quantity; // Calculate the total price
-      return `
-           <div>
-        <p class="list-group-item d-flex justify-content-between align-items-center">
-          ${item.name} (₱${item.price} x ${item.quantity})
-          <span class="remove-item-btn text-danger" style="cursor: pointer;" data-index="${rowIndex + i}">&times;</span>
-        </p>
-        </div>
-        `;
-    })
-    .join(""); // Combine HTML for two items
-  rowsHTML.push(rowItems); // Add row items directly to the rowsHTML array
+
+function applyDiscount(amount) {
+  const el = document.getElementById('userStatus');
+  const status = el ? (el.value || '').trim().toUpperCase() : '';
+  return (status === 'PWD' || status === 'SENIOR') ? amount * 0.9 : amount;
 }
 
-  // Set rows of cart items
+function computeBaseTotal() {
+  return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+}
+
+function updateCartUI() {
+  total = 0;
+  const rowsHTML = [];
+
+  for (let i = 0; i < cartItems.length; i += 2) {
+    const rowItems = cartItems.slice(i, i + 2).map((item, rowIndex) => {
+      total += item.price * item.quantity;
+      return `
+        <div>
+          <p class="list-group-item d-flex justify-content-between align-items-center">
+            ${item.name} (₱${item.price} x ${item.quantity})
+            <span class="remove-item-btn text-danger" style="cursor: pointer;" data-index="${rowIndex + i}">&times;</span>
+          </p>
+        </div>`;
+    }).join("");
+    rowsHTML.push(rowItems);
+  }
+
   cartItemsElement.innerHTML = rowsHTML.join("");
 
-  // Update the total price in the cart
-  cartTotalElement.textContent = `₱${total.toFixed(2)}`;
-  console.log("Cart total updated:", total.toFixed(2));
+  const discountedTotal = applyDiscount(total);
 
+  cartTotalElement.textContent = `₱${discountedTotal.toFixed(2)}`;
+  if ('value' in cartTotalElement) cartTotalElement.value = discountedTotal.toFixed(2);
 
-  // Dynamically populate the hidden inputs in the form:
-  const cartDataInput = document.getElementById("cartItemsInput");
-  console.log("Cart data input element:", cartDataInput);
-  const totalPriceInput = document.getElementById("totalPriceInput");
-
-  cartDataInput.value = JSON.stringify(cartItems); // Serialize cart items as JSON
-  totalPriceInput.value = total.toFixed(2); // Send the total price to the server
-
-  // Add event listeners for removing items
-  document.querySelectorAll(".remove-item-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      const index = parseInt(this.getAttribute("data-index"));
-      removeFromCart(index);
-    });
-  });
+  document.getElementById("cartItemsInput").value = JSON.stringify(cartItems);
+  document.getElementById("totalPriceInput").value = discountedTotal.toFixed(2);
 }
 
+(function () {
+  const form = document.getElementById("checkoutForm");
+  const paymentInput = document.getElementById("paymentAmountInput");
+  const totalPriceInput = document.getElementById("totalPriceInput");
 
+  function cartIsEmpty() {
+    return !Array.isArray(cartItems) || cartItems.length === 0;
+  }
+  function paymentIsEnough() {
+    const discounted = applyDiscount(computeBaseTotal());
+    totalPriceInput.value = discounted.toFixed(2);
+    const pay = parseFloat(paymentInput.value) || 0;
+    const totalDue = parseFloat(totalPriceInput.value) || 0;
+    return pay >= totalDue;
+  }
 
+  form.addEventListener("submit", function (e) {
+    // recompute discounted total right before submit
+    const discounted = applyDiscount(computeBaseTotal());
+    totalPriceInput.value = discounted.toFixed(2);
+
+    if (cartIsEmpty()) {
+      e.preventDefault();
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+    if (!paymentIsEnough()) {
+      e.preventDefault();
+      alert("Payment amount is less than the total price. Please enter enough to cover the total.");
+      paymentInput.focus();
+    }
+  });
+})();
 
   // Function to add an item to the cart
- // Function to add an item to the cart
 function addToCart(product) {
   // Step 1: Check if the product already exists in the cart
   const existingItemIndex = cartItems.findIndex((item) => item.name === product.name);
@@ -95,11 +120,9 @@ const cartElement = document.querySelector('#cart');
   } else {
     console.error("Cart offcanvas element not found.");
   }
+}    
 
 
-
-
-}   
 
   // Function to remove an item from the cart
   function removeFromCart(index) {
@@ -301,4 +324,4 @@ console.log(navbarElement); // Check if element exists
   window.addEventListener("scroll", handleScrollHideOffcanvas);
 });
 
-
+  

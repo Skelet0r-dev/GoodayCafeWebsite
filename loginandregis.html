@@ -137,9 +137,20 @@
                             <div class="mb-4">
                                 <div class="d-flex justify-content-between">
                                     <label for="passwordInput" class="form-label small text-uppercase tracking-wide">Password</label>
-                                
                                 </div>
                                 <input type="password" class="form-control form-control-lg form-control-dark" id="passReg" name="passReg" placeholder="••••••••" required>
+                            </div>
+
+                            <!--Status Input-->
+                            <div class="mb-3">
+                                <label for="statusInput" class="form-label small text-uppercase tracking-wide">Status</label>
+                                <select class="form-select form-select-lg form-control-dark mt-2" aria-label="Default select example" id="statusReg" name="statusReg" required>
+                                    <option selected disabled value="">Select your status</option>
+                                    <option value="USER">Customer</option>
+                                    <option value="STAFF">Staff</option>
+                                    <option value="PWD">PWD</option>
+                                    <option value="SENIOR">Senior Citizen</option>
+                                </select>
                             </div>
 
                             <!-- Submit Button -->

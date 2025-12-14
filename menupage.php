@@ -14,13 +14,13 @@ if ($conn === false) {
 } 
 
 session_start(); // Start the session to access data
-if (isset($_SESSION['variable'])) {
-    echo "Received session data: " . htmlspecialchars($_SESSION['variable']);
-}
 
 $firstName = isset($_SESSION['fname']) ? $_SESSION['fname'] : 'Guest';
 $lastName = isset($_SESSION['lname']) ? $_SESSION['lname'] : 'User';
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
+$status = isset($_SESSION['status']) ? $_SESSION['status'] : '';
+
 
 
 // Fetch products with their images
@@ -76,6 +76,8 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
  
 
   <header>
+
+<!-- As a heading -->
 
         <!-- Carousel: autoplay enabled via data attributes below -->
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000" data-bs-pause="hover" aria-label="Featured images carousel">
@@ -149,8 +151,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     </div>`
   </div>
 
-<!-- NAVBAR -->   <!--FIX THIS LATER!! ADD JAVASCRIPT!!!-->
-
+<!-- NAVBAR -->  
 
 <div class="container-fluid py-2 mb-2 mt-4 sticky-top" id="navbar">
   <div class="container py-3 px-3"
@@ -158,24 +159,21 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
 
     <div class="d-flex justify-content-center gap-2 align-items-center flex-wrap" id="navbar" name="navbar">
 
-      <!-- Search -->
-      <form class="d-flex" role="search" aria-label="Site search">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-sm rounded-pill"
-                 type="search"
-                 placeholder="Search"
-                 aria-label="Search"
-                 style="background:white; border:1px solid rgb(252, 215, 126); color:rgb(92, 78, 59);" />
 
-          <button class="btn btn-sm rounded-pill ms-1 search-btn"
-                  type="submit"
-                  aria-label="Submit search">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-      </form>
+      <div class="d-flex gap-3"> <!-- User Profile -->
+        <!-- User Profile button to trigger offcanvas -->
+      <a href="#"
+           class="btn btn-sm rounded-pill nav-btn px-3 text-decoration-none toggle-nav"
+           data-bs-toggle="offcanvas"
+           data-bs-target="#userProfile"
+           aria-controls="userProfile">
+          <?php echo htmlspecialchars($firstName); ?> <i class="bi bi-person-fill"></i>
+        </a>
+      </div>
+    
 
-      <div class="d-flex gap-3"> <!-- Nav Buttons -->
+
+  <!-- Nav Buttons -->
         <!-- Nav buttons with "active" glow toggle -->
 
         <a href="#productIcedDrinkRow"
@@ -386,17 +384,36 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     <div class="offcanvas-footer">
     <!-- Checkout Form -->
     <form id="checkoutForm" action="order.php" method="POST">
-      <input type="hidden" name="cartItemsInput" id="cartItemsInput">
-      <input type="hidden" name="totalPriceInput" id="totalPriceInput">
-      <input type="hidden" name="userIdInput" id="userIdInput" value="<?php echo htmlspecialchars($userId); ?>">
-      <input type="number" name="paymenrtAmountInput" id="paymentAmountInput" placeholder="Enter Payment Amount" class="form-control mt-3" required>
-      <button type="submit" class="btn btn-success w-100 mt-4">Checkout</button>
-    </form>
+  <input type="hidden" name="cartItemsInput" id="cartItemsInput">
+  <input type="hidden" name="totalPriceInput" id="totalPriceInput">
+  <input type="hidden" name="userIdInput" id="userIdInput" value="<?php echo htmlspecialchars($userId); ?>">
+  <input type="hidden" name="userStatus" id="userStatus" value="<?php echo htmlspecialchars($status); ?>">
+  <input type="number" name="paymentAmountInput" id="paymentAmountInput" placeholder="Enter Payment Amount" class="form-control mt-3" required>
+  <button type="submit" class="btn btn-success w-100 mt-4">Checkout</button>
+</form>
     </div>
   </div>
 </div>
 
+<!--/Offcanvas Cart -->
 
+
+<!--Off canvas User Profile-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="userProfile" aria-labelledby="userProfileLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="userProfileLabel">User Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p><strong>First Name:</strong> <?php echo htmlspecialchars($firstName); ?></p>
+    <p><strong>Last Name:</strong> <?php echo htmlspecialchars($lastName); ?></p>
+    <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
+    <p><strong>Status:</strong> <?php echo htmlspecialchars($status); ?></p>
+
+    <a href="loginandregis.html" class="btn btn-danger mt-3">Logout</a>
+    <!-- Additional user info can be added here -->
+  </div>
+</div>
     
 
 

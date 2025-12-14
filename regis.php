@@ -15,6 +15,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $bday = $_POST['bday'];
 $emailReg = $_POST['emailReg'];
+$status =  $_POST['statusReg'];
 $passReg = $_POST['passReg'];
 
 $checksql = "SELECT EMAIL FROM USERS WHERE EMAIL = '$emailReg'";
@@ -28,8 +29,8 @@ if ($emailcheck==true){
               </script>";
         exit;
 }else{
-$sqlinsert = "INSERT INTO USERS ([FIRSTNAME], [LASTNAME], [DATEOFBIRTH], [EMAIL], [PASS], [ADMIN])
-      VALUES ('$fname', '$lname','$bday', '$emailReg','$passReg', '0')";
+$sqlinsert = "INSERT INTO USERS ([FIRSTNAME], [LASTNAME], [DATEOFBIRTH], [EMAIL], [PASS], [STATUS])
+      VALUES ('$fname', '$lname','$bday', '$emailReg','$passReg', '$status')";
 
 $sqlresult = sqlsrv_query($conn,$sqlinsert);
 
