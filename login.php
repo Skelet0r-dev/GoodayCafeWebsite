@@ -42,7 +42,8 @@ if ($rowpass == null) {
                 alert('Wrong Password');
                 window.location.href='loginandregis.html';
               </script>");
-}else if ($rowpass['ADMIN'] == 1){
+
+}else if ($rowpass['STATUS'] == "STAFF"){
     session_start();
     $_SESSION['fname'] = $rowpass['FIRSTNAME'];
     $_SESSION['lname'] = $rowpass['LASTNAME'];
@@ -53,6 +54,8 @@ if ($rowpass == null) {
     $_SESSION['user_id'] = $rowpass['USER_ID'];
     $_SESSION['fname'] = $rowpass['FIRSTNAME'];
     $_SESSION['lname'] = $rowpass['LASTNAME'];
+    $_SESSION['email'] = $rowpass['EMAIL'];
+    $_SESSION['status'] = $rowpass['STATUS'];
     header("Location: menupage.php");
     exit;
 }
