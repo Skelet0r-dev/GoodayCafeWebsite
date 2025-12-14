@@ -1,0 +1,304 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Containers for each category
+  const categoryContainers = {
+    "Iced Drink": document.querySelector(".iced-drinks-container"),
+    "Hot Drink": document.querySelector(".hot-drinks-container"),
+    Frappe: document.querySelector(".frappe-drinks-container"),
+    Refresher: document.querySelector(".refresher-drinks-container"),
+    Pizza: document.querySelector(".pizza-container"),
+    Pasta: document.querySelector(".pasta-container"),
+    Pastry: document.querySelector(".pastries-container"),
+  };
+
+  const modalsContainer = document.createElement("div"); // Container for modals
+  document.body.appendChild(modalsContainer);
+
+  const cartItemsElement = document.getElementById("cartItems"); // Cart view container
+  const cartTotalElement = document.getElementById("cartTotal"); // Cart total price
+  const cartOffcanvas = new bootstrap.Offcanvas(document.getElementById("cart")); // Offcanvas instance
+  let cartItems = [];
+  let total = 0;
+
+function updateCartUI() {
+  total = 0; // Reset total price
+
+  const rowsHTML = [];
+ for (let i = 0; i < cartItems.length; i += 2) {
+  const rowItems = cartItems.slice(i, i + 2) // Get two items per row
+    .map((item, rowIndex) => {
+      total += item.price * item.quantity; // Calculate the total price
+      return `
+           <div>
+        <p class="list-group-item d-flex justify-content-between align-items-center">
+          ${item.name} (₱${item.price} x ${item.quantity})
+          <span class="remove-item-btn text-danger" style="cursor: pointer;" data-index="${rowIndex + i}">&times;</span>
+        </p>
+        </div>
+        `;
+    })
+    .join(""); // Combine HTML for two items
+  rowsHTML.push(rowItems); // Add row items directly to the rowsHTML array
+}
+
+  // Set rows of cart items
+  cartItemsElement.innerHTML = rowsHTML.join("");
+
+  // Update the total price in the cart
+  cartTotalElement.textContent = `₱${total.toFixed(2)}`;
+  console.log("Cart total updated:", total.toFixed(2));
+
+
+  // Dynamically populate the hidden inputs in the form:
+  const cartDataInput = document.getElementById("cartItemsInput");
+  console.log("Cart data input element:", cartDataInput);
+  const totalPriceInput = document.getElementById("totalPriceInput");
+
+  cartDataInput.value = JSON.stringify(cartItems); // Serialize cart items as JSON
+  totalPriceInput.value = total.toFixed(2); // Send the total price to the server
+
+  // Add event listeners for removing items
+  document.querySelectorAll(".remove-item-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const index = parseInt(this.getAttribute("data-index"));
+      removeFromCart(index);
+    });
+  });
+}
+
+
+
+
+  // Function to add an item to the cart
+ // Function to add an item to the cart
+function addToCart(product) {
+  // Step 1: Check if the product already exists in the cart
+  const existingItemIndex = cartItems.findIndex((item) => item.name === product.name);
+
+  if (existingItemIndex !== -1) {
+    // Update the quantity if the product already exists in the cart
+    cartItems[existingItemIndex].quantity += product.quantity;
+  } else {
+    // Add the product as a new item in the cart
+    cartItems.push(product);
+  }
+
+  // Step 2: Update the cart UI
+  updateCartUI();
+
+
+  // Step 3: Simulate a click on the Cart button to open the cart offcanvas
+const cartElement = document.querySelector('#cart');
+  if (cartElement) {
+    const cartInstance = bootstrap.Offcanvas.getOrCreateInstance(cartElement);
+    cartInstance.show();
+    console.log("Cart offcanvas opened programmatically after adding a product.");
+  } else {
+    console.error("Cart offcanvas element not found.");
+  }
+
+
+
+
+}   
+
+  // Function to remove an item from the cart
+  function removeFromCart(index) {
+    cartItems.splice(index, 1); // Remove item from cart array
+    updateCartUI(); // Update UI
+    cartOffcanvas.show(); // Show the cart offcanvas
+  }
+
+
+  // Function to create a product card
+  function createProductCard(product) {
+    const cardContainer = document.createElement("div");
+    cardContainer.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4";
+
+    cardContainer.innerHTML = `
+      <div class="card text-center" style="background-color: rgb(92, 78, 59);">
+        <div class="card-img-container beige-custom" style="height: 200px; overflow: hidden; background-color: rgb(237, 223, 203);">
+          <img src="${product.FILEPATH}" alt="${product.PRODUCT_NAME}" class="card-img-top" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title beige-custom">${product.PRODUCT_NAME}</h5>
+          <p class="card-text beige-custom">${product.DESCRIPTION}</p>
+          <button type="button" class="btn btn-cart" data-bs-toggle="modal" data-bs-target="#modal-${product.PRODUCT_ID}">
+            Add to Cart <i class="bi bi-cart-fill"></i>
+          </button>
+        </div>
+      </div>
+    `;
+
+    createProductModal(product, cardContainer);
+    return cardContainer;
+  }
+
+  // Function to create a modal for a product
+  function createProductModal(product) {
+    const modal = document.createElement("div");
+    modal.className = "modal fade";
+    modal.id = `modal-${product.PRODUCT_ID}`;
+    modal.setAttribute("tabindex", "-1");
+    modal.setAttribute("aria-hidden", "true");
+
+    modal.innerHTML = `
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">${product.PRODUCT_NAME}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <img src="${product.FILEPATH}" alt="${product.PRODUCT_NAME}" class="w-100 mb-3" style="height: 300px; object-fit: contain; border-radius: 8px;">
+            </div>
+            <p><strong>Description:</strong> ${product.DESCRIPTION}</p>
+            <p><strong>Price:</strong> ₱${product.PRICE}</p>
+
+            <div class="quantity-selector d-flex align-items-center gap-3 justify-content-center mt-3">
+              <button type="button" class="quantity-btn decrement-btn btn btn-outline-secondary">-</button>
+              <span class="quantity-display">1</span>
+              <button type="button" class="quantity-btn increment-btn btn btn-outline-secondary">+</button>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary add-to-cart-modal-btn" 
+              data-product-id="${product.PRODUCT_ID}"
+              data-product-name="${product.PRODUCT_NAME}" 
+              data-product-price="${product.PRICE}">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    `;
+
+    let quantity = 1;
+    const decrementBtn = modal.querySelector(".decrement-btn");
+    const incrementBtn = modal.querySelector(".increment-btn");
+    const quantityDisplay = modal.querySelector(".quantity-display");
+
+    decrementBtn.addEventListener("click", () => {
+      if (quantity > 1) {
+        quantity--;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+
+    incrementBtn.addEventListener("click", () => {
+      quantity++;
+      quantityDisplay.textContent = quantity;
+    });
+
+    const addToCartBtn = modal.querySelector(".add-to-cart-modal-btn");
+    addToCartBtn.addEventListener("click", () => {
+      addToCart({ name: product.PRODUCT_NAME, price: product.PRICE, quantity, id: product.PRODUCT_ID });
+        const bootstrapModal = bootstrap.Modal.getInstance(modal);
+        bootstrapModal.hide();
+    });
+
+
+    modalsContainer.appendChild(modal);
+    
+  }
+
+  // Process products and categorize cards
+  products.forEach((product) => {
+    if (categoryContainers[product.PRODUCT_CATEGORY]) {
+      const card = createProductCard(product);
+      categoryContainers[product.PRODUCT_CATEGORY].appendChild(card);
+    } else {
+      console.warn(`Unknown category: ${product.PRODUCT_CATEGORY}`);
+    }
+
+    
+  });
+
+ 
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all nav buttons with the class 'toggle-nav'
+  const navButtons = document.querySelectorAll(".toggle-nav");
+
+  navButtons.forEach((button) => {
+    // Add click event listener to each button
+    button.addEventListener("click", function () {
+      const isActive = this.classList.contains("active-glow");
+
+      // Remove the 'active-glow' class from all buttons
+      navButtons.forEach((btn) => btn.classList.remove("active-glow"));
+
+      // Toggle the 'active-glow' class on the clicked button
+      if (!isActive) {
+        this.classList.add("active-glow");
+      }
+    });
+  });
+
+  // Add scroll event listener to remove the active-glow class if scrolling away
+  window.addEventListener("scroll", function () {
+    navButtons.forEach((btn) => btn.classList.remove("active-glow"));
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all nav buttons with the class 'toggle-nav-cart'
+  const navButtons = document.querySelectorAll(".toggle-nav-cart");
+
+  navButtons.forEach((button) => {
+    // Add click event listener to each button
+    button.addEventListener("click", function () {
+      const offcanvasTarget = this.getAttribute("data-bs-target"); // Get the offcanvas target
+      const offcanvasElement = document.querySelector(offcanvasTarget); // Get the corresponding offcanvas element
+
+      // Add event listeners for the offcanvas state
+      if (offcanvasElement) {
+        // When the offcanvas is shown
+        offcanvasElement.addEventListener("shown.bs.offcanvas", () => {
+          navButtons.forEach((btn) => btn.classList.remove("active-glow")); // Remove glow from all buttons
+          this.classList.add("active-glow"); // Add glow to the clicked button
+        });
+
+        // When the offcanvas is hidden
+        offcanvasElement.addEventListener("hidden.bs.offcanvas", () => {
+          this.classList.remove("active-glow"); // Remove glow from the clicked button
+        });
+      }
+    });
+  });
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const offcanvasElement = document.getElementById("cart"); // Your offcanvas element
+  const offcanvasInstance = new bootstrap.Offcanvas(offcanvasElement); // Bootstrap Offcanvas instance
+  const navbarElement = document.querySelector("#navbar"); // Select element with ID "navbar"
+console.log(navbarElement); // Check if element exists
+
+    
+
+  // Function to handle scroll behavior
+  function handleScrollHideOffcanvas() {
+    const scrollPosition = window.scrollY; // Current scroll position
+    const navbarHeight = navbarElement.offsetHeight; // Dynamically retrieve navbar height
+
+    // Hide the offcanvas if the scroll position exceeds the navbar height
+    if (scrollPosition < navbarHeight + 400) { // Add additional 100px threshold beyond the navbar
+      offcanvasInstance.hide(); // Hide the offcanvas modal 
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScrollHideOffcanvas);
+});
+
+

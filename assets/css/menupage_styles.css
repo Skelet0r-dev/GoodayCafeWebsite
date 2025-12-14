@@ -1,0 +1,240 @@
+/* Custom Link Styling */
+.link-light-custom {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.link-light-custom:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Helper Fonts */
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+.font-montserrat {
+  font-family: 'Montserrat', serif;
+}
+.font-garamond {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Custom Colors */
+.beige-custom {
+  color: rgb(245, 240, 233);
+}
+.light-Gold {
+  color: rgb(252, 215, 126);
+}
+.dark-brown {
+  color: rgb(92, 78, 59);
+}
+
+/* Navigation button hover with gradient and glow */
+.nav-btn {
+  color: rgb(245, 240, 233); /* default gold/yellow text */
+  border: 1px solid rgb(245, 240, 233);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #fcd77e, #ffe0b4);
+  color: black; /* text turns black on hover */
+  box-shadow: 0 6px 15px rgba(252, 215, 126, 0.6);
+  transform: translateY(-3px);
+  border-color: #fcd77e;
+}
+
+/* Glow effect when active or toggled */
+.nav-btn.active-glow {
+  background: linear-gradient(135deg, #fcd77e, #ffe0b4); /* glowing background */
+  color: black; /* black text for better contrast */
+  box-shadow: 0 6px 20px rgba(252, 215, 126, 0.8); /* brighter glow */
+  transform: scale(1.05); /* slight zoom effect */
+  border-color: #ffe0b4;
+}
+
+/* Search Button */
+.search-btn {
+  background: rgb(245, 240, 233);
+  color: rgb(92, 78, 59);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.search-btn:hover {
+  background: linear-gradient(135deg, #ffe0b4, #fcd77e);
+  color: black;
+  box-shadow: 0 6px 15px rgba(252, 215, 126, 0.6);
+  transform: translateY(-3px);
+}
+
+/* Cart Button */
+.btn-cart {
+  background-color: rgb(252, 215, 126); /* default gold */
+  color: rgb(92, 78, 59); /* text default */
+  border: none;
+  border-radius: 50px; /* pill shape */
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+}
+.btn-cart:hover {
+  background: linear-gradient(135deg, #fcd77e, #ffe0b4); /* gradient hover */
+  color: black; /* text turns black on hover */
+  box-shadow: 0 6px 15px rgba(252, 215, 126, 0.6); /* soft glow */
+  transform: translateY(-3px); /* lift effect */
+}
+
+/* Card Hover Effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Card Container */
+.card-container {
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff; /* White background for content distinction */
+}
+
+/* Card Images */
+.card-img-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: rgb(237, 223, 203);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Light shadow for card depth */
+  border-radius: 8px;
+}
+.card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+}
+.card-img-container img:hover {
+  transform: scale(1.2); /* Slight zoom effect */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove Button */
+.btn-remove {
+  background-color: rgb(245, 78, 59);
+  color: white;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-remove:hover {
+  background: rgb(200, 45, 40);
+  box-shadow: 0 6px 20px rgba(200, 45, 40, 0.6); /* Shadow glow */
+  transform: translateY(-3px);
+}
+
+/* Quantity Selector */
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background: white;
+}
+.quantity-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: #f8f9fa; /* Light gray background */
+  color: #495057;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quantity-btn:hover:not(:disabled) {
+  background: #e9ecef;
+  color: #212529;
+}
+.quantity-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.quantity-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.quantity-display {
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+  color: #212529;
+}
+
+
+
+
+/* Offcanvas Cart Styles */
+.cart-offcanvas {
+  margin-top: 100px;
+  height: 75vh;
+  width: 350px;
+  background-color: #fff;
+  top: 75px;
+  right: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+#emptyState {
+  color: #606770;
+  font-family: 'Arial', sans-serif;
+}
+
+#cartItems {
+  margin-top: 20px;
+}
+
+#cartItems .list-group-item {
+  border: none;
+  padding: 10px 0;
+}
+
+#cartTotalSection {
+  border-top: 1px solid #dee2e6;
+  padding-top: 10px;
+}
+
+#summaryLink {
+  text-decoration: none;
+  font-size: 14px;
+  color: #606770;
+}
+
+#summaryLink:hover {
+  text-decoration: underline;
+}
+
+#checkoutButton {
+  font-weight: bold;
+}
