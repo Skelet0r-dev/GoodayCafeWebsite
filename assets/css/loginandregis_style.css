@@ -386,7 +386,7 @@ box-sizing: border-box;
 }
 
 
-.gooddaylogoccarosel-img {
+.gooddaycarousel-img {
   height: 400px;                  /* keep the fixed height you had */
   object-fit: cover;              /* preserve cover behavior */
   object-position: 50% 30%;       /* move the focal point up (50% horizontally, 30% vertically) */
@@ -491,4 +491,32 @@ body{
   .cart-panel.closed{transform:translateX(120%) }
   .cart-handle{display:none}
   #open-cart-btn{display:block}
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    max-width: 220px;
+  }
+  #hero {
+    height: 100vh;
+  }
+  .container-content .d-flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .container-content .btn-lg {
+    width: 100%;
+  }
+  .modal-dialog {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-img {
+    max-width: 180px;
+  }
+  .container-content {
+    padding-inline: 1.25rem;
+  }
 }

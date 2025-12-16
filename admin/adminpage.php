@@ -219,8 +219,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productIcedDrinkRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Iced Drinks</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Iced Drinks</h1>
                     <p>Check out some of our popular Iced Drinks items!</p>
                   </div>
                   <div class="row g-4 iced-drinks-container"></div>
@@ -231,8 +231,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productHotDrinkRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Hot Drinks</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Hot Drinks</h1>
                     <p>Check out some of our popular Hot Drinks items!</p>
                   </div>
                   <div class="row g-4 hot-drinks-container"></div>
@@ -243,8 +243,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productFrappeRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Frappe's</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Frappe's</h1>
                     <p>Check out some of our popular Frappe's items!</p>
                   </div>
                   <div class="row g-4 frappe-drinks-container"></div>
@@ -255,8 +255,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productRefresherRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Refresher's</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Refresher's</h1>
                     <p>Check out some of our popular Refresher's items!</p>
                   </div>
                   <div class="row g-4 refresher-drinks-container"></div>
@@ -267,8 +267,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productPizzaRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pizza</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Pizza</h1>
                     <p>Check out some of our popular Pizza items!</p>
                   </div>
                   <div class="row g-4 pizza-container"></div>
@@ -279,8 +279,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productPastaRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pasta</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Pasta</h1>
                     <p>Check out some of our popular Pasta items!</p>
                   </div>
                   <div class="row g-4 pasta-container"></div>
@@ -291,8 +291,8 @@ while ($productRow = sqlsrv_fetch_array($productsResult)) {
             <div class="row g-4 mb-5" id="productPastryRow">
               <div style="padding-top: 20px;">
                 <div class="container-fluid">
-                  <div class="container text-start">
-                    <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pastries</h1>
+                    <div class="container text-start">
+                    <h1 class="font-playfair fw-bold title-xxl">Pastries</h1>
                     <p>Check out some of our popular Pastries items!</p>
                   </div>
                   <div class="row g-4 pastries-container"></div>

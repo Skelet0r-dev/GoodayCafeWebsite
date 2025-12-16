@@ -185,3 +185,17 @@
   text-align: center;
   color: #212529;
 }
+
+.title-xxl {
+  font-size: 100px;
+}
+
+@media (max-width: 768px) {
+  .title-xxl {
+    font-size: 2.4rem;
+    line-height: 1.1;
+  }
+  .card-img-container {
+    height: 160px;
+  }
+}

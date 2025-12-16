@@ -238,3 +238,83 @@
 #checkoutButton {
   font-weight: bold;
 }
+
+.gooddaycarousel-img {
+  height: 400px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+  margin-top: 0;
+  transform: translateY(-30px);
+  transition: transform .15s ease;
+}
+
+.title-xxl {
+  font-size: 100px;
+}
+
+.title-xl {
+  font-size: 75px;
+}
+
+.title-lg {
+  font-size: 25px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991px) {
+  .gooddaycarousel-img {
+    height: 320px;
+    transform: none;
+  }
+  .card-img-container {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  #navbar .d-flex {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+  }
+  #navbar .d-flex::-webkit-scrollbar {
+    display: none;
+  }
+  #navbar .nav-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .title-xxl {
+    font-size: 2.4rem;
+    line-height: 1.1;
+  }
+  .title-xl {
+    font-size: 2.15rem;
+    line-height: 1.2;
+  }
+  .title-lg {
+    font-size: 1.2rem;
+  }
+  .card-img-container {
+    height: 160px;
+  }
+  .cart-offcanvas {
+    margin-top: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .gooddaycarousel-img {
+    height: 240px;
+  }
+  .nav-btn {
+    padding-inline: 0.85rem;
+  }
+}
