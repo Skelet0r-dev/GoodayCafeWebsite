@@ -239,9 +239,31 @@
   font-weight: bold;
 }
 
+.gooddaycarousel-img {
+  height: 400px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+  margin-top: 0;
+  transform: translateY(-30px);
+  transition: transform .15s ease;
+}
+
+.title-xxl {
+  font-size: 100px;
+}
+
+.title-xl {
+  font-size: 75px;
+}
+
+.title-lg {
+  font-size: 25px;
+}
+
 /* Responsive tweaks */
 @media (max-width: 991px) {
-  .gooddaylogoccarosel-img {
+  .gooddaycarousel-img {
     height: 320px;
     transform: none;
   }
@@ -264,16 +286,16 @@
     flex: 0 0 auto;
     white-space: nowrap;
   }
-  h1[style*="font-size: 100px"] {
-    font-size: 2.4rem !important;
+  .title-xxl {
+    font-size: 2.4rem;
     line-height: 1.1;
   }
-  h1[style*="font-size: 75px"] {
-    font-size: 2.15rem !important;
+  .title-xl {
+    font-size: 2.15rem;
     line-height: 1.2;
   }
-  h4[style*="font-size: 25px"] {
-    font-size: 1.2rem !important;
+  .title-lg {
+    font-size: 1.2rem;
   }
   .card-img-container {
     height: 160px;
@@ -289,7 +311,7 @@
 }
 
 @media (max-width: 576px) {
-  .gooddaylogoccarosel-img {
+  .gooddaycarousel-img {
     height: 240px;
   }
   .nav-btn {

@@ -91,20 +91,20 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
   
           <!-- Slides -->
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="assets/img/Gemini_Generated_Image_hkvt8ahkvt8ahkvt.png" class="d-block w-100 gooddaylogoccarosel-img" alt="Coffee and pastries — slide 1" style="height:500px; object-fit:cover;">
+             <div class="carousel-item active">
+              <img src="assets/img/Gemini_Generated_Image_hkvt8ahkvt8ahkvt.png" class="d-block w-100 gooddaycarousel-img" alt="Coffee and pastries — slide 1">
             </div>
   
-            <div class="carousel-item">
-              <img src="assets/img/Gemini_Generated_Image_dw50l4dw50l4dw50.png" class="d-block w-100" alt="Coffee closeup — slide 2" style="height:500px; object-fit:cover; object-position: center ;">
+             <div class="carousel-item">
+              <img src="assets/img/Gemini_Generated_Image_dw50l4dw50l4dw50.png" class="d-block w-100 gooddaycarousel-img" alt="Coffee closeup — slide 2">
               <div class="carousel-caption d-none d-md-block text-start">
                 <h3 class="font-playfair fw-bold">Try our Refreshing refreshers!</h3>
                 <p>Some representative placeholder content for the second slide.</p>
               </div>
             </div>
   
-            <div class="carousel-item">
-              <img src="assets/img/Gemini_Generated_Image_dl8qt7dl8qt7dl8q.png" class="d-block w-100" alt="Pastries display — slide 3" style="height:500px; object-fit:cover;">
+             <div class="carousel-item">
+              <img src="assets/img/Gemini_Generated_Image_dl8qt7dl8qt7dl8q.png" class="d-block w-100 gooddaycarousel-img" alt="Pastries display — slide 3">
               <div class="carousel-caption d-none d-md-block text-start">
                 <h3 class="font-playfair fw-bold">Third slide label</h3>
                 <p>Some representative placeholder content for the third slide.</p>
@@ -113,7 +113,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
         
           
             <div class="carousel-item">
-              <img src="assets/img/Add_a_subheading.png" class="d-block w-100" alt="Pastries display — slide 3" style="height:500px; object-fit:cover;">
+              <img src="assets/img/Add_a_subheading.png" class="d-block w-100 gooddaycarousel-img" alt="Pastries display — slide 3">
               <div class="carousel-caption d-none d-md-block text-start">
               <div class="carousel-caption d-none d-md-block text-start">
               </div>
@@ -145,8 +145,8 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
 
   <div style="padding-top: 30px;">
     <div class="container text-center py-4 mb-1">
-      <h1 class="font-playfair fw-bold" style="font-size: 75px;">Our Menu</h1>
-      <h4 class="font-playfair fw-bold" style="font-size: 25px;">Welcome, <?php echo htmlspecialchars($firstName . ' ' . $lastName); ?>!</h4>
+      <h1 class="font-playfair fw-bold title-xl">Our Menu</h1>
+      <h4 class="font-playfair fw-bold title-lg">Welcome, <?php echo htmlspecialchars($firstName . ' ' . $lastName); ?>!</h4>
       <p class="lead" style="padding-top: 20px;">Explore our delicious offerings below!</p>
     </div>`
   </div>
@@ -253,7 +253,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Iced Drinks</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Iced Drinks</h1>
                             <p>Check out some of our popular Iced Drinks items!</p>
                         </div>
                         <div class="row g-4 iced-drinks-container">
@@ -268,7 +268,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Hot Drinks</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Hot Drinks</h1>
                             <p>Check out some of our popular Hot Drinks items!</p>
                         </div>
                         <div class="row g-4 hot-drinks-container">
@@ -283,7 +283,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Frappe's</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Frappe's</h1>
                             <p>Check out some of our popular Frappe's items!</p>
                         </div>
                         <div class="row g-4 frappe-drinks-container">
@@ -298,7 +298,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Refresher's</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Refresher's</h1>
                             <p>Check out some of our popular Refresher's items!</p>
                         </div>
                         <div class="row g-4 refresher-drinks-container">
@@ -312,7 +312,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pizza</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Pizza</h1>
                             <p>Check out some of our popular Pizza items!</p>
                         </div>
                         <div class="row g-4 pizza-container">
@@ -325,7 +325,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pasta</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Pasta</h1>
                             <p>Check out some of our popular Pasta items!</p>
                         </div>
                         <div class="row g-4 pasta-container">
@@ -338,7 +338,7 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
                 <div style="padding-top: 20px;">
                     <div class="container-fluid">
                         <div class="container text-start">
-                            <h1 class="font-playfair fw-bold" style="font-size: 100px;">Pastries</h1>
+                             <h1 class="font-playfair fw-bold title-xxl">Pastries</h1>
                             <p>Check out some of our popular Pastries items!</p>
                         </div>
                         <div class="row g-4 pastries-container">

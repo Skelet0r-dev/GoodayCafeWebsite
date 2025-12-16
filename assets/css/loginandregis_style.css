@@ -386,7 +386,7 @@ box-sizing: border-box;
 }
 
 
-.gooddaylogoccarosel-img {
+.gooddaycarousel-img {
   height: 400px;                  /* keep the fixed height you had */
   object-fit: cover;              /* preserve cover behavior */
   object-position: 50% 30%;       /* move the focal point up (50% horizontally, 30% vertically) */
