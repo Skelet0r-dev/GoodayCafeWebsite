@@ -492,3 +492,31 @@ body{
   .cart-handle{display:none}
   #open-cart-btn{display:block}
 }
+
+@media (max-width: 768px) {
+  .logo-img {
+    max-width: 220px;
+  }
+  #hero {
+    height: 100vh;
+  }
+  .container-content .d-flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .container-content .btn-lg {
+    width: 100%;
+  }
+  .modal-dialog {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-img {
+    max-width: 180px;
+  }
+  .container-content {
+    padding-inline: 1.25rem;
+  }
+}
