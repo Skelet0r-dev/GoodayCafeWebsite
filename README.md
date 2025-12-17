@@ -1,7 +1,7 @@
 # Gooday Cafe Website
 
 To set up with XAMPP:
-1. Copy this folder into `xampp/htdocs/GoodayCafeWebsite`.
+1. Copy this folder into `xampp/htdocs/GoodayCafeWebsite/` (matching the repository folder name).
 2. Start Apache (PHP runs via Apache) and ensure your SQL Server/SQLExpress service is running.
 3. Execute the root-level `CREATE TABLES FOR CAFE.sql` in SQL Server Management Studio or via `sqlcmd` to create the `Good_Day_Cafe` database and tables.
 

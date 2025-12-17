@@ -32,7 +32,7 @@ CREATE TABLE dbo.PRODUCT_IMAGE (
 -- ORDER (quoted because ORDER is reserved)
 CREATE TABLE dbo.[ORDER] (
     ORDER_ID      INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    USER_ID       INT               NULL,
+    USER_ID       INT               NOT NULL,
     TOTAL_PRICE   DECIMAL(10,2)     NULL,
     ORDER_PLACED  DATE              NULL,
     PAYMENT       DECIMAL(10,2)     NULL,
@@ -44,10 +44,10 @@ CREATE TABLE dbo.[ORDER] (
 -- ORDER_ITEM
 CREATE TABLE dbo.ORDER_ITEM (
     ORDER_ITEM_ID  INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    ORDER_ID       INT               NULL,
-    PRODUCT_ID     INT               NULL,
-    PRODUCT_NAME   NVARCHAR(50)      NULL,
-    QUANTITY       INT               NULL,
+    ORDER_ID       INT               NOT NULL,
+    PRODUCT_ID     INT               NOT NULL,
+    PRODUCT_NAME   NVARCHAR(50)      NOT NULL,
+    QUANTITY       INT               NOT NULL,
     PRICE          DECIMAL(10,2)     NOT NULL,
     CONSTRAINT FK_ORDER_ITEM_ORDER FOREIGN KEY (ORDER_ID)
         REFERENCES dbo.[ORDER](ORDER_ID),
