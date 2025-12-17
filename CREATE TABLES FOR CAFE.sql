@@ -32,9 +32,9 @@ CREATE TABLE dbo.PRODUCT_IMAGE (
 CREATE TABLE dbo.[ORDER] (
     ORDER_ID      INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     USER_ID       INT               NULL,
-    TOTAL_PRICE   INT               NULL,
+    TOTAL_PRICE   DECIMAL(10,2)     NULL,
     ORDER_PLACED  DATE              NULL,
-    PAYMENT       INT               NULL,
+    PAYMENT       DECIMAL(10,2)     NULL,
     DISCOUNT      NVARCHAR(50)      NOT NULL
 );
 
@@ -45,5 +45,5 @@ CREATE TABLE dbo.ORDER_ITEM (
     PRODUCT_ID     INT               NULL,
     PRODUCT_NAME   NVARCHAR(50)      NULL,
     QUANTITY       INT               NULL,
-    PRICE          INT               NOT NULL
+    PRICE          DECIMAL(10,2)     NOT NULL
 );
