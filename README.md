@@ -8,7 +8,7 @@ Use XAMPP by copying this folder into `xampp/htdocs/GoodayCafeWebsite`, start Ap
 - **PRODUCT_IMAGE**: image metadata (`IMAGE_NAME`, `FILEPATH`) linked to `PRODUCT_ID` for each product.
 - **ORDER**: top-level order records (`USER_ID`, `TOTAL_PRICE`, `ORDER_PLACED`, `PAYMENT`, `DISCOUNT`) with `ORDER_ID` as the primary key.
 - **ORDER_ITEM**: line items for each order, referencing `ORDER_ID` and `PRODUCT_ID`, with quantity and price per item.
-- Schema is defined in `CREATE TABLE'S FOR CAFE.sql`; import it into your SQL Server instance before running the site.
+- Schema is defined in `CREATE TABLES FOR CAFE.sql`; import it into your SQL Server instance before running the site.
 
 ## 6. Code Details
 
@@ -28,7 +28,7 @@ Use XAMPP by copying this folder into `xampp/htdocs/GoodayCafeWebsite`, start Ap
   - `menupage.php`: customer-facing menu and ordering UI.  
   - `order.php`: handles order submissions.  
   - `test.html`: static test/demo page.  
-  - `CREATE TABLE'S FOR CAFE.sql`: database schema script.
+  - `CREATE TABLES FOR CAFE.sql`: database schema script.
 
 ### 6.2 GitHub Repository
 Public repository: https://github.com/Skelet0r-dev/GoodayCafeWebsite
