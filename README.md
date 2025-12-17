@@ -1,6 +1,8 @@
 # Gooday Cafe Website
 
-Use XAMPP by copying this folder into `xampp/htdocs/GoodayCafeWebsite`, start Apache and MySQL (PHP runs via Apache), and run the SQL script to create the database.
+Use XAMPP by copying this folder into `xampp/htdocs/GoodayCafeWebsite`, start Apache (PHP runs via Apache) and ensure your SQL Server/SQLExpress service is running, then execute `CREATE TABLES FOR CAFE.sql` from the project root to create the database.
+
+_Sections 5 and 6 follow the numbering used in the project brief._
 
 ## 5. Database Design
 - **USERS**: stores customer and staff profiles (`FIRSTNAME`, `LASTNAME`, `DATEOFBIRTH`, `EMAIL`, `PASS`, `STATUS`). `USER_ID` is the primary key used by sessions and orders.
